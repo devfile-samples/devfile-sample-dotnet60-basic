@@ -9,10 +9,10 @@ metadata:
   tags:
     - dotnet
   attributes:
-    alpha.dockerimage-port: 8081
-parent:
-  id: dotnet60
-  registryUrl: "https://registry.devfile.io"
+    alpha.dockerimage-port: 8080
+# parent:
+#   id: dotnet60
+#   registryUrl: "https://registry.devfile.io"
 components:
   - name: outerloop-build
     image:
