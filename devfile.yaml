@@ -1,0 +1,49 @@
+schemaVersion: 2.2.0
+metadata:
+  name: dotnet60
+  version: 1.0.0
+  icon: https://github.com/dotnet/brand/raw/main/logo/dotnet-logo.png
+  provider: Red Hat
+  language: dotnet
+  projectType: dotnet
+  tags:
+    - dotnet
+  attributes:
+    alpha.dockerimage-port: 8081
+parent:
+  id: dotnet60
+  registryUrl: "https://registry.devfile.io"
+components:
+  - name: outerloop-build
+    image:
+      imageName: "dotnet-image:latest"
+      dockerfile:
+        uri: docker/Dockerfile
+        buildContext: .
+        rootRequired: false
+  - name: outerloop-deploy
+    kubernetes:
+      uri: kubernetes/deployment.yaml
+  - name: outerloop-service
+    kubernetes:
+      uri: kubernetes/service.yaml
+commands:
+  - id: build-image
+    apply:
+     component: outerloop-build
+  - id: deploy-deployment
+    apply:
+     component: outerloop-deploy
+  - id: deploy-service
+    apply:
+     component: outerloop-service
+  - id: deploy
+    composite:
+      commands:
+        - build-image
+        - deploy-deployment
+        - deploy-service
+      group:
+        isDefault: true
+        kind: deploy
+
