@@ -64,7 +64,7 @@ components:
       deployment/cpuRequest: 700m
       deployment/memoryLimit: 500Mi
       deployment/memoryRequest: 400Mi
-      deployment/containerimage-port: 8081
+      deployment/container-port: 8081
     kubernetes:
       uri: kubernetes/service.yaml
 commands:
