@@ -4,6 +4,7 @@ metadata:
   version: 1.0.0
   icon: https://github.com/dotnet/brand/raw/main/logo/dotnet-logo.png
   provider: Red Hat
+  supportUrl: https://github.com/devfile-samples/devfile-support#support-information
   language: dotnet
   projectType: dotnet
   tags:
