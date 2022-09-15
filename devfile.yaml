@@ -53,6 +53,10 @@ components:
       deployment/container-port: 8081
     kubernetes:
       uri: kubernetes/deployment.yaml
+      endpoints:
+        - name: http-8081
+          targetPort: 8081
+          path: /
   - name: kubernetes-service
     attributes:
       deployment/replicas: 1
