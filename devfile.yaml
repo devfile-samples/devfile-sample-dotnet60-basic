@@ -1,7 +1,7 @@
 schemaVersion: 2.2.0
 metadata:
   name: dotnet60
-  version: 1.0.0
+  version: 1.1.0
   icon: https://github.com/dotnet/brand/raw/main/logo/dotnet-logo.png
   provider: Red Hat
   supportUrl: https://github.com/devfile-samples/devfile-support#support-information
@@ -36,14 +36,14 @@ components:
       endpoints:
         - name: http-8080
           targetPort: 8080
-  - name: outerloop-build
+  - name: image-build
     image:
       imageName: "dotnet-image:latest"
       dockerfile:
         uri: docker/Dockerfile
         buildContext: .
         rootRequired: false
-  - name: outerloop-deploy
+  - name: kubernetes-deploy
     attributes:
       deployment/replicas: 1
       deployment/cpuLimit: "100m"
@@ -53,7 +53,11 @@ components:
       deployment/container-port: 8081
     kubernetes:
       uri: kubernetes/deployment.yaml
-  - name: outerloop-service
+      endpoints:
+        - name: http-8081
+          targetPort: 8081
+          path: /
+  - name: kubernetes-service
     attributes:
       deployment/replicas: 1
       deployment/cpuLimit: "100m"
@@ -72,7 +76,6 @@ commands:
       group:
         isDefault: true
         kind: build
-
   - id: run
     exec:
       workingDir: ${PROJECT_SOURCE}
@@ -83,13 +86,13 @@ commands:
         kind: run
   - id: build-image
     apply:
-     component: outerloop-build
+     component: image-build
   - id: deploy-deployment
     apply:
-     component: outerloop-deploy
+     component: kubernetes-deploy
   - id: deploy-service
     apply:
-     component: outerloop-service
+     component: kubernetes-service
   - id: deploy
     composite:
       commands:

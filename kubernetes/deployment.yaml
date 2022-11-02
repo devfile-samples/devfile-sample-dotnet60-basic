@@ -14,7 +14,14 @@ spec:
     spec:
       containers:
         - name: main
-          image: "{{CONTAINER_IMAGE}}"
+          image: "dotnet-image:latest"
           imagePullPolicy: Always
-          resources: {}
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          resources:
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
 
