@@ -1,14 +1,15 @@
 schemaVersion: 2.2.0
 metadata:
   name: dotnet60
-  version: 1.1.0
+  displayName: .NET 6.0
+  version: 1.1.1
   icon: https://github.com/dotnet/brand/raw/main/logo/dotnet-logo.png
   provider: Red Hat
   supportUrl: https://github.com/devfile-samples/devfile-support#support-information
-  language: dotnet
+  language: .NET
   projectType: dotnet
   tags:
-    - dotnet
+    - .NET
   attributes:
     alpha.dockerimage-port: 8081
 starterProjects:
@@ -24,7 +25,7 @@ components:
   - name: dotnet
     container:
       image: registry.access.redhat.com/ubi8/dotnet-60:6.0
-      command: ["tail", "-f", "/dev/null"]
+      command: ['tail', '-f', '/dev/null']
       mountSources: true
       env:
         - name: CONFIGURATION
@@ -38,7 +39,7 @@ components:
           targetPort: 8080
   - name: image-build
     image:
-      imageName: "dotnet-image:latest"
+      imageName: 'dotnet-image:latest'
       dockerfile:
         uri: docker/Dockerfile
         buildContext: .
@@ -46,7 +47,7 @@ components:
   - name: kubernetes-deploy
     attributes:
       deployment/replicas: 1
-      deployment/cpuLimit: "100m"
+      deployment/cpuLimit: '100m'
       deployment/cpuRequest: 10m
       deployment/memoryLimit: 300Mi
       deployment/memoryRequest: 100Mi
@@ -60,7 +61,7 @@ components:
   - name: kubernetes-service
     attributes:
       deployment/replicas: 1
-      deployment/cpuLimit: "100m"
+      deployment/cpuLimit: '100m'
       deployment/cpuRequest: 10m
       deployment/memoryLimit: 200Mi
       deployment/memoryRequest: 100Mi
@@ -86,13 +87,13 @@ commands:
         kind: run
   - id: build-image
     apply:
-     component: image-build
+      component: image-build
   - id: deploy-deployment
     apply:
-     component: kubernetes-deploy
+      component: kubernetes-deploy
   - id: deploy-service
     apply:
-     component: kubernetes-service
+      component: kubernetes-service
   - id: deploy
     composite:
       commands:
@@ -102,4 +103,3 @@ commands:
       group:
         isDefault: true
         kind: deploy
-
