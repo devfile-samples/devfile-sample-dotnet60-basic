@@ -20,8 +20,3 @@ spec:
             - name: http
               containerPort: 8081
               protocol: TCP
-          resources:
-            limits:
-              memory: "1024Mi"
-              cpu: "500m"
-
