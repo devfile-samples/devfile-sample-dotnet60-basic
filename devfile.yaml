@@ -53,7 +53,7 @@ components:
     kubernetes:
       uri: kubernetes/deployment.yaml
       endpoints:
-        - name: http-8080
+        - name: k8s-http-8080
           targetPort: 8080
           path: /
   - name: kubernetes-service
