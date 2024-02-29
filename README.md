@@ -10,7 +10,7 @@ Before you begin creating an application with this `devfile` code sample, it's h
 1. The `devfile.yaml` file has an [`image-build` component](https://github.com/devfile-samples/devfile-sample-dotnet60-basic/blob/main/devfile.yaml#L40-L46) that points to your `Dockerfile`.
 2. The [`docker/Dockerfile`](https://github.com/devfile-samples/devfile-sample-dotnet60-basic/blob/main/docker/Dockerfile) contains the instructions you need to build the code sample as a container image.
 3. The `devfile.yaml` [`kubernetes-deploy` component](https://github.com/devfile-samples/devfile-sample-dotnet60-basic/blob/main/devfile.yaml#L47-L59) and [`kubernetes-service` component](https://github.com/devfile-samples/devfile-sample-dotnet60-basic/blob/main/devfile.yaml#L60-L67) points to a `deployment.yaml` file and `service.yaml`that contains instructions for deploying the built container image.
-4. The `devfile.yaml` [`deploy` command](https://github.com/devfile-samples/devfile-sample-dotnet60-basic/blob/main/devfile.yaml#L85-L102) completes the [outerloop](https://devfile.io/docs/2.2.0/innerloop-vs-outerloop) deployment phase by pointing to the `image-build` and `kubernetes-deploy` components to create your application.
+4. The `devfile.yaml` [`deploy` command](https://github.com/devfile-samples/devfile-sample-dotnet60-basic/blob/main/devfile.yaml#L94-L102) completes the [outerloop](https://devfile.io/docs/2.2.0/innerloop-vs-outerloop) deployment phase by pointing to the `image-build` and `kubernetes-deploy` components to create your application.
 
 ### Additional resources
 * For more information about .NET, see [.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet).
