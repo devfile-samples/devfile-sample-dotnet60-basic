@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["local>devfile-samples/.github:renovate-config"],
+  "enabledManagers": ["nuget", "dockerfile"],
+  "packageRules": [
+    {
+      "matchManagers": ["nuget"],
+      "groupName": "nuget dependencies",
+      "groupSlug": "nuget-deps",
+      "commitMessageTopic": "NuGet {{depName}}"
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "groupName": "dockerfile dependencies",
+      "groupSlug": "nuget-deps",
+      "commitMessageTopic": "Dockerfile {{depName}}"
+      
+    },
+    {
+      "matchManagers": ["nuget"],
+      "matchUpdateTypes": ["major"],
+      "matchBaseBranches": "main",
+      "enabled": false
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "matchUpdateTypes": ["major"],
+      "matchBaseBranches": "main",
+      "enabled": false
+    }
+  ]
+}
