@@ -12,7 +12,7 @@
     {
       "matchManagers": ["dockerfile"],
       "groupName": "dockerfile dependencies",
-      "groupSlug": "nuget-deps",
+      "groupSlug": "dockerfile-deps",
       "commitMessageTopic": "Dockerfile {{depName}}"
       
     },
