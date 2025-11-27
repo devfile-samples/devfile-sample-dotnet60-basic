@@ -1,5 +1,8 @@
 # Creating an application with a .NET60 code sample
 
+> [!WARNING]
+> This devfile sample has been deprecated and will no longer be maintained. It has been archived and will remain read-only.
+
 **Note:** The .NET60 code sample uses the **8081** HTTP port.
 
 Before you begin creating an application with this `devfile` code sample, it's helpful to understand the relationship between the `devfile` and `Dockerfile` and how they contribute to your build. You can find these files at the following URLs:
